@@ -1,8 +1,12 @@
 import WebApiUtil from '../util/WebAPI'
 
 const ListActions = {
-  getList(page, receiveList){
-    WebApiUtil.getList(page, receiveList);
+  getList(page, searchTerm, receiveList){
+    if ( searchTerm.length === 0 ) {
+      WebApiUtil.getList(page, receiveList);      
+    } else {
+      WebApiUtil.getSearchList(page, searchTerm, receiveList)
+    }
   }
 };
 

@@ -16,7 +16,11 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    ListActions.getList(this.state.page, this.receiveList.bind(this))
+    this.getList(this.state.page, this.state.searchTerm)
+  }
+
+  getList( page, searchTerm ) {
+    ListActions.getList(page, searchTerm, this.receiveList.bind(this))
   }
 
   receiveList( articles ) {
@@ -26,20 +30,25 @@ export default class App extends Component {
   pageUp() {
     let newPage = this.state.page + 1
     this.setState( { page: newPage } )
-    ListActions.getList(newPage, this.receiveList.bind(this))
+    this.getList(newPage, this.state.searchTerm)
   }
 
   pageDown() {
     if ( this.state.page > 0 ) {
       let newPage = this.state.page - 1
       this.setState( { page: newPage } )
-      ListActions.getList(newPage, this.receiveList.bind(this))
+      this.getList(newPage, this.state.searchTerm)
     }
   }
 
   setSearch( searchTerm ) {
-    this.setState({ searchTerm: searchTerm })
-    console.log( searchTerm )
+    this.setState({ page: 0, searchTerm: searchTerm })
+    this.getList(0, searchTerm)
+  }
+
+  resetPage() {
+    this.setState({ page: 0, searchTerm: "" })
+    this.getList(0, "")
   }
 
   render() {

@@ -15,13 +15,14 @@ export default class SearchBar extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.setSearch( this.state.searchTerm )
+    this.setState({ searchTerm: "" })
   }
 
   render() {
     return (
       <div>
       <form onSubmit={ this.handleSubmit.bind(this) }>
-        <input type="search"
+        <input type="search" value={ this.state.searchTerm }
           onChange={ this.updateSearch.bind(this) }
         />
         </form>

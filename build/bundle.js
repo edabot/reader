@@ -22448,7 +22448,12 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      _listActions2.default.getList(this.state.page, this.receiveList.bind(this));
+      this.getList(this.state.page, this.state.searchTerm);
+    }
+  }, {
+    key: 'getList',
+    value: function getList(page, searchTerm) {
+      _listActions2.default.getList(page, searchTerm, this.receiveList.bind(this));
     }
   }, {
     key: 'receiveList',
@@ -22460,7 +22465,7 @@ var App = function (_Component) {
     value: function pageUp() {
       var newPage = this.state.page + 1;
       this.setState({ page: newPage });
-      _listActions2.default.getList(newPage, this.receiveList.bind(this));
+      this.getList(newPage, this.state.searchTerm);
     }
   }, {
     key: 'pageDown',
@@ -22468,14 +22473,20 @@ var App = function (_Component) {
       if (this.state.page > 0) {
         var newPage = this.state.page - 1;
         this.setState({ page: newPage });
-        _listActions2.default.getList(newPage, this.receiveList.bind(this));
+        this.getList(newPage, this.state.searchTerm);
       }
     }
   }, {
     key: 'setSearch',
     value: function setSearch(searchTerm) {
-      this.setState({ searchTerm: searchTerm });
-      console.log(searchTerm);
+      this.setState({ page: 0, searchTerm: searchTerm });
+      this.getList(0, searchTerm);
+    }
+  }, {
+    key: 'resetPage',
+    value: function resetPage() {
+      this.setState({ page: 0, searchTerm: "" });
+      this.getList(0, "");
     }
   }, {
     key: 'render',
@@ -22654,6 +22665,7 @@ var SearchBar = function (_Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.setSearch(this.state.searchTerm);
+      this.setState({ searchTerm: "" });
     }
   }, {
     key: "render",
@@ -22664,7 +22676,7 @@ var SearchBar = function (_Component) {
         _react2.default.createElement(
           "form",
           { onSubmit: this.handleSubmit.bind(this) },
-          _react2.default.createElement("input", { type: "search",
+          _react2.default.createElement("input", { type: "search", value: this.state.searchTerm,
             onChange: this.updateSearch.bind(this)
           })
         )
@@ -22797,8 +22809,12 @@ var _WebAPI2 = _interopRequireDefault(_WebAPI);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ListActions = {
-  getList: function getList(page, receiveList) {
-    _WebAPI2.default.getList(page, receiveList);
+  getList: function getList(page, searchTerm, receiveList) {
+    if (searchTerm.length === 0) {
+      _WebAPI2.default.getList(page, receiveList);
+    } else {
+      _WebAPI2.default.getSearchList(page, searchTerm, receiveList);
+    }
   }
 };
 
@@ -22822,6 +22838,22 @@ var WebApiUtil = {
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + _jquery2.default.param({
       'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'page': page
+    });
+    _jquery2.default.ajax({
+      url: url,
+      method: 'GET'
+    }).done(function (result) {
+      receiveList(result.response.docs);
+    }).fail(function (err) {
+      throw err;
+    });
+  },
+  getSearchList: function getSearchList(page, searchTerm, receiveList) {
+    var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    url += '?' + _jquery2.default.param({
+      'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'q': searchTerm,
       'page': page
     });
     _jquery2.default.ajax({
