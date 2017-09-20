@@ -5,14 +5,14 @@ import SearchBar from './searchBar'
 export default class Header extends Component {
   render() {
     return (
-      <div>
+      <div id="header">
         <div id="titlebar">
           <div id="title">THE TIMES</div>
           <div id="search_bar">
             <SearchBar setSearch={ this.props.setSearch }/>
           </div>
         </div>
-        <div className="categories">
+        <div id="categories">
           <div>Home</div>
           <div>World</div>
           <div>U.S.</div>

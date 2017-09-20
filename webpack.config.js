@@ -9,12 +9,22 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        test: /\.js$/,
         options: {
           presets: [ 'react', 'babel-preset-env' ]
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader"
+          }, {
+            loader: "css-loader"
+          }, {
+            loader: "sass-loader"
+          }]
       }
     ]
   },

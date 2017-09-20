@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Header from './header'
 import ArticleList from './articleList'
-
+import './main.scss'
 import ListActions from '../actions/listActions'
 
 export default class App extends Component {

@@ -1,0 +1,52 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+#header {
+  width: 1024px;
+  margin: 0 auto;
+
+  #titlebar {
+    background-color: #263238;
+    padding: 20px;
+    position: relative;
+    font-size: 1.5em;
+
+    #title {
+      color: white;
+      text-align: center;
+    }
+
+    #search_bar {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background-color: #3C464C;
+
+      input {
+        background-color: #3C464C;
+        border: 0;
+        color: white;
+      }
+    }
+  }
+
+  #categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 50px;
+    border: solid 1px #ECECEC;
+    box-shadow: 0 8px 13px -3px #f6f6f6;
+
+    div {
+      padding: 20px;
+      font-weight:700;
+    }
+  }
+
+}

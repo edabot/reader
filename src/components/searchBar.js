@@ -22,8 +22,11 @@ export default class SearchBar extends Component {
     return (
       <div>
       <form onSubmit={ this.handleSubmit.bind(this) }>
-        <input type="search" value={ this.state.searchTerm }
+        <input
+          type="search"
+          value={ this.state.searchTerm }
           onChange={ this.updateSearch.bind(this) }
+          placeholder="Search"
         />
         </form>
       </div>
