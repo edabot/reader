@@ -10,7 +10,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       searchTerm: "",
-      page: 1,
+      page: 0,
       articles: []
     };
   }
@@ -20,16 +20,19 @@ export default class App extends Component {
   }
 
   receiveList(articles) {
-    console.log(articles)
     this.setState({ articles: articles})
   }
 
   pageUp() {
-    this.setState( { page: this.state.page + 1 } )
+    let newPage = this.state.page + 1
+    this.setState( { page: newPage } )
+    ListActions.getList(newPage, this.receiveList.bind(this))
   }
 
   pageDown() {
-    this.setState( { page: this.state.page - 1 } )
+    let newPage = this.state.page - 1
+    this.setState( { page: newPage } )
+    ListActions.getList(newPage, this.receiveList.bind(this))
   }
 
   render() {
@@ -37,6 +40,8 @@ export default class App extends Component {
       <div>
         <Header />
         <ArticleList articles={this.state.articles} />
+        <div onClick={this.pageDown.bind(this)}>previous</div>
+        <div onClick={this.pageUp.bind(this)}>next</div>
       </div>
     )
   }

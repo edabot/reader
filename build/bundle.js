@@ -22459,12 +22459,16 @@ var App = function (_Component) {
   }, {
     key: 'pageUp',
     value: function pageUp() {
-      this.setState({ page: this.state.page + 1 });
+      var newPage = this.state.page + 1;
+      this.setState({ page: newPage });
+      _listActions2.default.getList(newPage, this.receiveList.bind(this));
     }
   }, {
     key: 'pageDown',
     value: function pageDown() {
-      this.setState({ page: this.state.page - 1 });
+      var newPage = this.state.page - 1;
+      this.setState({ page: newPage });
+      _listActions2.default.getList(newPage, this.receiveList.bind(this));
     }
   }, {
     key: 'render',
@@ -22473,7 +22477,17 @@ var App = function (_Component) {
         'div',
         null,
         _react2.default.createElement(_header2.default, null),
-        _react2.default.createElement(_articleList2.default, { articles: this.state.articles })
+        _react2.default.createElement(_articleList2.default, { articles: this.state.articles }),
+        _react2.default.createElement(
+          'div',
+          { onClick: this.pageDown.bind(this) },
+          'previous'
+        ),
+        _react2.default.createElement(
+          'div',
+          { onClick: this.pageUp.bind(this) },
+          'next'
+        )
       );
     }
   }]);
