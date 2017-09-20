@@ -19,7 +19,7 @@ export default class App extends Component {
     ListActions.getList(this.state.page, this.receiveList.bind(this))
   }
 
-  receiveList(articles) {
+  receiveList( articles ) {
     this.setState({ articles: articles})
   }
 
@@ -30,15 +30,22 @@ export default class App extends Component {
   }
 
   pageDown() {
-    let newPage = this.state.page - 1
-    this.setState( { page: newPage } )
-    ListActions.getList(newPage, this.receiveList.bind(this))
+    if ( this.state.page > 0 ) {
+      let newPage = this.state.page - 1
+      this.setState( { page: newPage } )
+      ListActions.getList(newPage, this.receiveList.bind(this))
+    }
+  }
+
+  setSearch( searchTerm ) {
+    this.setState({ searchTerm: searchTerm })
+    console.log( searchTerm )
   }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header setSearch={ this.setSearch.bind(this) }/>
         <ArticleList articles={this.state.articles} />
         <div onClick={this.pageDown.bind(this)}>previous</div>
         <div onClick={this.pageUp.bind(this)}>next</div>

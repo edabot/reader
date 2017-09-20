@@ -9,7 +9,7 @@ export default class Header extends Component {
         <div id="titlebar">
           <div id="title">THE TIMES</div>
           <div id="search_bar">
-            <SearchBar />
+            <SearchBar setSearch={ this.props.setSearch }/>
           </div>
         </div>
         <div className="categories">

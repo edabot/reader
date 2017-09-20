@@ -22439,7 +22439,7 @@ var App = function (_Component) {
 
     _this.state = {
       searchTerm: "",
-      page: 1,
+      page: 0,
       articles: []
     };
     return _this;
@@ -22453,7 +22453,6 @@ var App = function (_Component) {
   }, {
     key: 'receiveList',
     value: function receiveList(articles) {
-      console.log(articles);
       this.setState({ articles: articles });
     }
   }, {
@@ -22466,9 +22465,17 @@ var App = function (_Component) {
   }, {
     key: 'pageDown',
     value: function pageDown() {
-      var newPage = this.state.page - 1;
-      this.setState({ page: newPage });
-      _listActions2.default.getList(newPage, this.receiveList.bind(this));
+      if (this.state.page > 0) {
+        var newPage = this.state.page - 1;
+        this.setState({ page: newPage });
+        _listActions2.default.getList(newPage, this.receiveList.bind(this));
+      }
+    }
+  }, {
+    key: 'setSearch',
+    value: function setSearch(searchTerm) {
+      this.setState({ searchTerm: searchTerm });
+      console.log(searchTerm);
     }
   }, {
     key: 'render',
@@ -22476,7 +22483,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_header2.default, null),
+        _react2.default.createElement(_header2.default, { setSearch: this.setSearch.bind(this) }),
         _react2.default.createElement(_articleList2.default, { articles: this.state.articles }),
         _react2.default.createElement(
           'div',
@@ -22552,7 +22559,7 @@ var Header = function (_Component) {
           _react2.default.createElement(
             'div',
             { id: 'search_bar' },
-            _react2.default.createElement(_searchBar2.default, null)
+            _react2.default.createElement(_searchBar2.default, { setSearch: this.props.setSearch })
           )
         ),
         _react2.default.createElement(
@@ -22626,19 +22633,41 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SearchBar = function (_Component) {
   _inherits(SearchBar, _Component);
 
-  function SearchBar() {
+  function SearchBar(props) {
     _classCallCheck(this, SearchBar);
 
-    return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+
+    _this.state = {
+      searchTerm: ""
+    };
+    return _this;
   }
 
   _createClass(SearchBar, [{
-    key: 'render',
+    key: "updateSearch",
+    value: function updateSearch(e) {
+      this.setState({ searchTerm: e.target.value });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.setSearch(this.state.searchTerm);
+    }
+  }, {
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
-        'search'
+        _react2.default.createElement(
+          "form",
+          { onSubmit: this.handleSubmit.bind(this) },
+          _react2.default.createElement("input", { type: "search",
+            onChange: this.updateSearch.bind(this)
+          })
+        )
       );
     }
   }]);
