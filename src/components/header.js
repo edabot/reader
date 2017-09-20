@@ -13,7 +13,7 @@ export default class Header extends Component {
           </div>
         </div>
         <div id="categories">
-          <div>Home</div>
+          <div onClick={this.props.resetPage}>Home</div>
           <div>World</div>
           <div>U.S.</div>
           <div>Politics</div>

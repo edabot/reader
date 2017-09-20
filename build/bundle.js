@@ -22496,7 +22496,7 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_header2.default, { setSearch: this.setSearch.bind(this) }),
+        _react2.default.createElement(_header2.default, { resetPage: this.resetPage.bind(this), setSearch: this.setSearch.bind(this) }),
         _react2.default.createElement(_articleList2.default, { articles: this.state.articles }),
         _react2.default.createElement(
           'div',
@@ -22580,7 +22580,7 @@ var Header = function (_Component) {
           { id: 'categories' },
           _react2.default.createElement(
             'div',
-            null,
+            { onClick: this.props.resetPage },
             'Home'
           ),
           _react2.default.createElement(
@@ -22737,7 +22737,7 @@ var ArticleList = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'articles' },
+        { id: 'articles' },
         this.props.articles.map(function (article) {
           return _react2.default.createElement(_article2.default, { key: article.uri, article: article });
         })
@@ -22785,12 +22785,51 @@ var ArticleList = function (_Component) {
   }
 
   _createClass(ArticleList, [{
-    key: "render",
+    key: 'imageBox',
+    value: function imageBox() {
+      if (this.props.article.multimedia[0]) {
+        return _react2.default.createElement('img', { src: 'http://nytimes.com/' + this.props.article.multimedia[0].url });
+      }
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      var article = this.props.article,
+          time = new Date(this.props.article.pub_date).toLocaleTimeString();
+      var timeString = time.substring(0, time.length - 6) + time.substring(time.length - 3) + ' ET';
+
       return _react2.default.createElement(
-        "div",
-        { className: "article" },
-        this.props.article.headline.main
+        'div',
+        { className: 'article' },
+        _react2.default.createElement(
+          'div',
+          { className: 'article_image' },
+          this.imageBox()
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'article_info' },
+          _react2.default.createElement(
+            'div',
+            { className: 'article_title' },
+            this.props.article.headline.main
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'article_snippet' },
+            this.props.article.snippet
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'article_credit' },
+            this.props.article.byline.original + ' ',
+            _react2.default.createElement(
+              'span',
+              { className: 'article_time' },
+              timeString
+            )
+          )
+        )
       );
     }
   }]);
@@ -22840,7 +22879,7 @@ exports = module.exports = __webpack_require__(191)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 6px -6px #F6F6F6; }\n    #header #categories div {\n      padding: 20px; }\n", ""]);
+exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#articles {\n  width: 924px;\n  margin: 0 auto; }\n  #articles .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #articles .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #articles .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #articles .article .article_info {\n      padding: 20px 30px; }\n    #articles .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #articles .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #articles .article .article_credit .article_time {\n        color: #002F6C; }\n", ""]);
 
 // exports
 

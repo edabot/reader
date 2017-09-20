@@ -8,7 +8,7 @@ body {
 
 #header {
   width: 1024px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
 
   #titlebar {
     background-color: #263238;
@@ -44,9 +44,58 @@ body {
     box-shadow: 0 8px 13px -3px #f6f6f6;
 
     div {
-      padding: 20px;
+      padding: 16px;
       font-weight:700;
+    }
+
+    div:first-child {
+      border-bottom: solid 3px #009CDE;
     }
   }
 
+}
+
+#articles {
+  width: 924px;
+  margin: 0 auto;
+
+  .article {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    border: solid 1px #ECECEC;
+    box-shadow: 0 8px 13px -3px #f6f6f6;
+    position: relative;
+    height: 200px;
+
+    .article_image{
+      min-width: 200px;
+      background-color: lightgray;
+
+      img {
+        object-fit: cover;
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .article_info {
+      padding: 20px 30px;
+    }
+
+    .article_title {
+      font-size: 1.4em;
+      margin-bottom: 40px;
+    }
+
+    .article_credit {
+      position: absolute;
+      bottom: 20px;
+      color: #B1B3B3;
+
+      .article_time {
+        color: #002F6C;
+      }
+    }
+  }
 }

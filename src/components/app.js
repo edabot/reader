@@ -54,7 +54,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Header setSearch={ this.setSearch.bind(this) }/>
+        <Header resetPage={this.resetPage.bind(this)} setSearch={ this.setSearch.bind(this) }/>
         <ArticleList articles={this.state.articles} />
         <div onClick={this.pageDown.bind(this)}>previous</div>
         <div onClick={this.pageUp.bind(this)}>next</div>
