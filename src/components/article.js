@@ -10,11 +10,20 @@ export default class ArticleList extends Component {
     }
   }
 
+  snippet() {
+    let snippet = this.props.article.snippet
+    if ( snippet.length < 170) {
+      return snippet
+    }
+    snippet = snippet.substring(0, 170)
+    let lastSpace = snippet.lastIndexOf(' ')
+    return snippet.substring(0, lastSpace) + '...'
+  }
+
   render() {
     let article = this.props.article,
         time = new Date(this.props.article.pub_date).toLocaleTimeString()
     let timeString = time.substring(0, time.length - 6) + time.substring(time.length - 3) + ' ET'
-
 
     return (
       <div className="article">
@@ -26,7 +35,7 @@ export default class ArticleList extends Component {
             { this.props.article.headline.main }
           </div>
           <div className="article_snippet">
-            { this.props.article.snippet }
+            { this.snippet() }
           </div>
           <div className="article_credit">
             { this.props.article.byline.original + ' '}

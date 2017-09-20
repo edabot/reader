@@ -22792,6 +22792,17 @@ var ArticleList = function (_Component) {
       }
     }
   }, {
+    key: 'snippet',
+    value: function snippet() {
+      var snippet = this.props.article.snippet;
+      if (snippet.length < 170) {
+        return snippet;
+      }
+      snippet = snippet.substring(0, 170);
+      var lastSpace = snippet.lastIndexOf(' ');
+      return snippet.substring(0, lastSpace) + '...';
+    }
+  }, {
     key: 'render',
     value: function render() {
       var article = this.props.article,
@@ -22817,7 +22828,7 @@ var ArticleList = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'article_snippet' },
-            this.props.article.snippet
+            this.snippet()
           ),
           _react2.default.createElement(
             'div',
@@ -22879,7 +22890,7 @@ exports = module.exports = __webpack_require__(191)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#articles {\n  width: 924px;\n  margin: 0 auto; }\n  #articles .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #articles .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #articles .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #articles .article .article_info {\n      padding: 20px 30px; }\n    #articles .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #articles .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #articles .article .article_credit .article_time {\n        color: #002F6C; }\n", ""]);
+exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#articles {\n  width: 924px;\n  margin: 0 auto; }\n  #articles .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #articles .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #articles .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #articles .article .article_info {\n      padding: 30px 20px; }\n    #articles .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #articles .article .article_snippet {\n      overflow: hidden;\n      text-overflow: ellipsis;\n      height: 40px; }\n    #articles .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #articles .article .article_credit .article_time {\n        color: #002F6C; }\n", ""]);
 
 // exports
 
