@@ -17,7 +17,8 @@ export default class fullArticle extends Component {
 
     return (
       <div className="full_article">
-        <div>Home > Search</div>
+        <div id="breadcrumbs"><span id="first">Home</span><span id="second">></span><span id="third">Article</span></div>
+
         <div className="article_title">
           { article.headline.main }
         </div>

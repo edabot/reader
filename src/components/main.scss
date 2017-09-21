@@ -111,8 +111,12 @@ body {
   }
 }
 
-.search_articles:first-child {
+.search_article:first-of-type {
   border-top: solid 2px #F5F5F5;
+}
+
+.search_articles {
+  margin-bottom: 30px;
 }
 
 .search_article {
@@ -140,6 +144,21 @@ body {
       font-size: 1.5em;
     }
   }
+}
+
+#breadcrumbs {
+  margin-bottom: 35px;
+  font-size: 1.25em;
+
+  #first {
+    color: #009CDE;
+  }
+
+  #second {
+    color: #C7C7CC;
+    margin: 0 12px;
+  }
+
 }
 
 #page_buttons {
