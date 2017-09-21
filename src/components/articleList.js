@@ -10,7 +10,7 @@ export default class ArticleList extends Component {
       <div id="top_stories">Top Stories</div>
       {
          this.props.articles.map(article => {
-           return <Article key={article.uri} article={article} setArticle={ this.props.setArticle }/>;
+           return <Article key={article._id} article={article} setArticle={ this.props.setArticle }/>;
          })
        }
       </div>

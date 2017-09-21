@@ -111,6 +111,37 @@ body {
   }
 }
 
+.search_articles:first-child {
+  border-top: solid 2px #F5F5F5;
+}
+
+.search_article {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid 2px #F5F5F5;
+  padding: 20px 0;
+
+  .article_image{
+    min-width: 100px;
+    min-height: 100px;
+
+    img {
+      object-fit: cover;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .article_info {
+    padding: 10px 30px;
+    .article_title {
+      color: #009CDE;
+      margin-bottom: 30px;
+      font-size: 1.5em;
+    }
+  }
+}
+
 #page_buttons {
   display: flex;
   justify-content: space-between;

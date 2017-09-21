@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ArticleList extends Component {
+export default class SearchArticle extends Component {
 
   imageBox() {
     if ( this.props.article.multimedia[0] ) {
@@ -18,16 +18,16 @@ export default class ArticleList extends Component {
     let article = this.props.article
 
     return (
-      <div className="article" onClick={ this.setArticle.bind(this) }>
+      <div className="search_article" onClick={ this.setArticle.bind(this) }>
         <div className="article_image">
           { this.imageBox() }
         </div>
         <div className="article_info">
           <div className="article_title">
-            { this.props.article.headline.main }
+            { article.headline.main }
           </div>
           <div className="article_snippet">
-            { this.snippet() }
+            { article.snippet }
           </div>
         </div>
       </div>
