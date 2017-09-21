@@ -52,7 +52,7 @@ export default class App extends Component {
   }
 
   resetPage() {
-    this.setState({ page: 0, searchTerm: "", currentArticle: null })
+    this.setState({ page: 0, searchTerm: "", articles: [], currentArticle: null })
     this.getList( 0, "" )
   }
 
