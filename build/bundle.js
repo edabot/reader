@@ -22890,7 +22890,7 @@ exports = module.exports = __webpack_require__(191)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#articles {\n  width: 924px;\n  margin: 0 auto; }\n  #articles .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #articles .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #articles .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #articles .article .article_info {\n      padding: 30px 20px; }\n    #articles .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #articles .article .article_snippet {\n      overflow: hidden;\n      text-overflow: ellipsis;\n      height: 40px; }\n    #articles .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #articles .article .article_credit .article_time {\n        color: #002F6C; }\n", ""]);
+exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar input {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#articles {\n  width: 924px;\n  margin: 0 auto; }\n  #articles .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #articles .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #articles .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #articles .article .article_info {\n      padding: 30px 20px; }\n    #articles .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #articles .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #articles .article .article_credit .article_time {\n        color: #002F6C; }\n", ""]);
 
 // exports
 
@@ -23467,13 +23467,18 @@ var _jquery = __webpack_require__(196);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _constants = __webpack_require__(197);
+
+var _constants2 = _interopRequireDefault(_constants);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var WebApiUtil = {
   getList: function getList(page, receiveList) {
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    debugger;
     url += '?' + _jquery2.default.param({
-      'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'api-key': _constants2.default.KEY,
       'page': page
     });
     _jquery2.default.ajax({
@@ -23488,7 +23493,7 @@ var WebApiUtil = {
   getSearchList: function getSearchList(page, searchTerm, receiveList) {
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + _jquery2.default.param({
-      'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'api-key': _constants2.default.KEY,
       'q': searchTerm,
       'page': page
     });
@@ -33764,6 +33769,19 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var ApiConstants = {
+  KEY: "a8457610b68381085a3fff38d6a36337:6:74255139"
+};
+
+module.exports = ApiConstants;
 
 /***/ })
 /******/ ]);

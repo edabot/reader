@@ -1,10 +1,12 @@
 import $ from 'jquery'
+import ApiConstants from './constants'
 
 const WebApiUtil = {
   getList(page, receiveList){
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    debugger
     url += '?' + $.param({
-      'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'api-key': ApiConstants.KEY,
       'page': page
     });
     $.ajax({
@@ -20,7 +22,7 @@ const WebApiUtil = {
   getSearchList(page, searchTerm, receiveList){
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     url += '?' + $.param({
-      'api-key': "a8457610b68381085a3fff38d6a36337:6:74255139",
+      'api-key': ApiConstants.KEY,
       'q': searchTerm,
       'page': page
     });
