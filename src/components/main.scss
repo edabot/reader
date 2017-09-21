@@ -146,6 +146,43 @@ body {
   }
 }
 
+.full_article {
+
+  .article_title {
+    font-size: 2.5em;
+    margin-bottom: 35px;
+  }
+
+  .article_credit {
+    margin-bottom: 45px;
+    color: #B1B3B3;
+  }
+
+  .article_time {
+    color: #02316D;
+  }
+
+  .article_content {
+    display: flex;
+    flex-direction: row;
+
+    .article_image{
+      min-width: 150px;
+      min-height: 150px;
+
+      img {
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    .article_info {
+      padding: 10px 40px;
+    }
+  }
+}
+
 #breadcrumbs {
   margin-bottom: 35px;
   font-size: 1.25em;

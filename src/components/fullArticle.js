@@ -26,11 +26,13 @@ export default class fullArticle extends Component {
           { article.byline.original + ' '}
           <span className="article_time">{ timeString }</span>
         </div>
-        <div className="article_image">
+        <div className="article_content">
+          <div className="article_image">
           { this.imageBox() }
-        </div>
-        <div className="article_info">
+          </div>
+          <div className="article_info">
           { article.snippet }
+          </div>
         </div>
       </div>
     )
