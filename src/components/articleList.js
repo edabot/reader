@@ -6,10 +6,11 @@ export default class ArticleList extends Component {
 
   render() {
     return (
-      <div id="articles">
+      <div>
+      <div id="top_stories">Top Stories</div>
       {
          this.props.articles.map(article => {
-           return <Article key={article.uri} article={article} />;
+           return <Article key={article.uri} article={article} setArticle={ this.props.setArticle }/>;
          })
        }
       </div>

@@ -27,7 +27,7 @@ body {
       top: 20px;
       background-color: #3C464C;
 
-      input {
+      #search {
         background-color: #3C464C;
         border: 0;
         color: white;
@@ -55,9 +55,17 @@ body {
 
 }
 
-#articles {
+#content {
   width: 924px;
   margin: 0 auto;
+
+  #top_stories {
+    font-family: serif;
+    font-weight: 700;
+    font-size: 2.5em;
+    margin-top: 18px;
+    margin-bottom: 30px;
+  }
 
   .article {
     display: flex;
@@ -101,4 +109,9 @@ body {
       }
     }
   }
+}
+
+#page_buttons {
+  display: flex;
+  justify-content: space-between;
 }

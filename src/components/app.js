@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Header from './header'
 import ArticleList from './articleList'
+import SearchList from './searchList'
+import FullArticle from './fullArticle'
 import './main.scss'
 import ListActions from '../actions/listActions'
 
@@ -11,7 +13,8 @@ export default class App extends Component {
     this.state = {
       searchTerm: "",
       page: 0,
-      articles: []
+      articles: [],
+      currentArticle: null
     };
   }
 
@@ -31,6 +34,7 @@ export default class App extends Component {
     let newPage = this.state.page + 1
     this.setState( { page: newPage } )
     this.getList(newPage, this.state.searchTerm)
+    window.scrollTo( 0, 0 )
   }
 
   pageDown() {
@@ -38,26 +42,59 @@ export default class App extends Component {
       let newPage = this.state.page - 1
       this.setState( { page: newPage } )
       this.getList(newPage, this.state.searchTerm)
+      window.scrollTo( 0, 0 )
     }
   }
 
   setSearch( searchTerm ) {
-    this.setState({ page: 0, searchTerm: searchTerm })
-    this.getList(0, searchTerm)
+    this.setState({ page: 0, searchTerm: searchTerm, currentArticle: null })
+    this.getList( 0, searchTerm )
   }
 
   resetPage() {
-    this.setState({ page: 0, searchTerm: "" })
-    this.getList(0, "")
+    this.setState({ page: 0, searchTerm: "", currentArticle: null })
+    this.getList( 0, "" )
+  }
+
+  setArticle(url) {
+    this.setState({ currentArticle: url })
+  }
+
+  content() {
+    if ( this.state.currentArticle ) {
+      return (
+        <FullArticle article={ this.state.currentArticle }/>
+      )
+    } else if ( this.state.searchTerm.length > 0 ) {
+      return (
+        <div>
+          <SearchList articles={this.state.articles} setArticle={ this.setArticle.bind(this) }/>
+          <div id="page_buttons">
+            <button onClick={this.pageDown.bind(this)}>previous</button>
+            <button onClick={this.pageUp.bind(this)}>next</button>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <ArticleList articles={this.state.articles} setArticle={ this.setArticle.bind(this) }/>
+          <div id="page_buttons">
+            <button onClick={this.pageDown.bind(this)}>previous</button>
+            <button onClick={this.pageUp.bind(this)}>next</button>
+          </div>
+        </div>
+      )
+    }
   }
 
   render() {
     return (
       <div>
         <Header resetPage={this.resetPage.bind(this)} setSearch={ this.setSearch.bind(this) }/>
-        <ArticleList articles={this.state.articles} />
-        <div onClick={this.pageDown.bind(this)}>previous</div>
-        <div onClick={this.pageUp.bind(this)}>next</div>
+        <div id="content">
+          { this.content() }
+        </div>
       </div>
     )
   }
