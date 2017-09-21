@@ -63,12 +63,12 @@ export default class App extends Component {
   content() {
     if ( this.state.currentArticle ) {
       return (
-        <FullArticle article={ this.state.currentArticle }/>
+        <FullArticle resetPage={this.resetPage.bind(this)} article={ this.state.currentArticle }/>
       )
     } else if ( this.state.searchTerm.length > 0 ) {
       return (
         <div>
-          <SearchList articles={this.state.articles} setArticle={ this.setArticle.bind(this) }/>
+          <SearchList resetPage={this.resetPage.bind(this)} articles={this.state.articles} setArticle={ this.setArticle.bind(this) }/>
           <div id="page_buttons">
             <button onClick={this.pageDown.bind(this)}>previous</button>
             <button onClick={this.pageUp.bind(this)}>next</button>

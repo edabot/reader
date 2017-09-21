@@ -17,7 +17,7 @@ export default class fullArticle extends Component {
 
     return (
       <div className="full_article">
-        <div id="breadcrumbs"><span id="first">Home</span><span id="second">></span><span id="third">Article</span></div>
+        <div id="breadcrumbs"><span id="first" onClick={ this.props.resetPage }>Home</span><span id="second">></span><span id="third">Article</span></div>
 
         <div className="article_title">
           { article.headline.main }
@@ -31,7 +31,10 @@ export default class fullArticle extends Component {
           { this.imageBox() }
           </div>
           <div className="article_info">
-          { article.snippet }
+            { article.snippet }
+            <div>
+              <a href={article.web_url}>FULL ARTICLE</a>
+            </div>
           </div>
         </div>
       </div>

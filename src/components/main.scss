@@ -75,6 +75,7 @@ body {
     box-shadow: 0 8px 13px -3px #f6f6f6;
     position: relative;
     height: 200px;
+    cursor: pointer;
 
     .article_image{
       min-width: 200px;
@@ -124,6 +125,7 @@ body {
   flex-direction: row;
   border-bottom: solid 2px #F5F5F5;
   padding: 20px 0;
+  cursor: pointer;
 
   .article_image{
     min-width: 100px;
@@ -179,6 +181,12 @@ body {
 
     .article_info {
       padding: 10px 40px;
+
+      a {
+        position: relative;
+        top: 15px;
+        font-size: .8em;
+      }
     }
   }
 }
@@ -189,6 +197,7 @@ body {
 
   #first {
     color: #009CDE;
+    cursor: pointer;
   }
 
   #second {
@@ -201,4 +210,8 @@ body {
 #page_buttons {
   display: flex;
   justify-content: space-between;
+
+  button {
+    cursor: pointer;
+  }
 }

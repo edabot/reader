@@ -22510,12 +22510,12 @@ var App = function (_Component) {
     key: 'content',
     value: function content() {
       if (this.state.currentArticle) {
-        return _react2.default.createElement(_fullArticle2.default, { article: this.state.currentArticle });
+        return _react2.default.createElement(_fullArticle2.default, { resetPage: this.resetPage.bind(this), article: this.state.currentArticle });
       } else if (this.state.searchTerm.length > 0) {
         return _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_searchList2.default, { articles: this.state.articles, setArticle: this.setArticle.bind(this) }),
+          _react2.default.createElement(_searchList2.default, { resetPage: this.resetPage.bind(this), articles: this.state.articles, setArticle: this.setArticle.bind(this) }),
           _react2.default.createElement(
             'div',
             { id: 'page_buttons' },
@@ -22970,7 +22970,7 @@ var SearchList = function (_Component) {
           { id: 'breadcrumbs' },
           _react2.default.createElement(
             'span',
-            { id: 'first' },
+            { id: 'first', onClick: this.props.resetPage },
             'Home'
           ),
           _react2.default.createElement(
@@ -23138,7 +23138,7 @@ var fullArticle = function (_Component) {
           { id: 'breadcrumbs' },
           _react2.default.createElement(
             'span',
-            { id: 'first' },
+            { id: 'first', onClick: this.props.resetPage },
             'Home'
           ),
           _react2.default.createElement(
@@ -23178,7 +23178,16 @@ var fullArticle = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'article_info' },
-            article.snippet
+            article.snippet,
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'a',
+                { href: article.web_url },
+                'FULL ARTICLE'
+              )
+            )
           )
         )
       );
@@ -23230,7 +23239,7 @@ exports = module.exports = __webpack_require__(194)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar #search {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#content {\n  width: 924px;\n  margin: 0 auto; }\n  #content #top_stories {\n    font-family: serif;\n    font-weight: 700;\n    font-size: 2.5em;\n    margin-top: 18px;\n    margin-bottom: 30px; }\n  #content .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px; }\n    #content .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #content .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #content .article .article_info {\n      padding: 30px 20px; }\n    #content .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #content .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #content .article .article_credit .article_time {\n        color: #002F6C; }\n\n.search_article:first-of-type {\n  border-top: solid 2px #F5F5F5; }\n\n.search_articles {\n  margin-bottom: 30px; }\n\n.search_article {\n  display: flex;\n  flex-direction: row;\n  border-bottom: solid 2px #F5F5F5;\n  padding: 20px 0; }\n  .search_article .article_image {\n    min-width: 100px;\n    min-height: 100px; }\n    .search_article .article_image img {\n      object-fit: cover;\n      width: 100px;\n      height: 100px; }\n  .search_article .article_info {\n    padding: 10px 30px; }\n    .search_article .article_info .article_title {\n      color: #009CDE;\n      margin-bottom: 30px;\n      font-size: 1.5em; }\n\n.full_article .article_title {\n  font-size: 2.5em;\n  margin-bottom: 35px; }\n\n.full_article .article_credit {\n  margin-bottom: 45px;\n  color: #B1B3B3; }\n\n.full_article .article_time {\n  color: #02316D; }\n\n.full_article .article_content {\n  display: flex;\n  flex-direction: row; }\n  .full_article .article_content .article_image {\n    min-width: 150px;\n    min-height: 150px; }\n    .full_article .article_content .article_image img {\n      object-fit: cover;\n      width: 150px;\n      height: 150px; }\n  .full_article .article_content .article_info {\n    padding: 10px 40px; }\n\n#breadcrumbs {\n  margin-bottom: 35px;\n  font-size: 1.25em; }\n  #breadcrumbs #first {\n    color: #009CDE; }\n  #breadcrumbs #second {\n    color: #C7C7CC;\n    margin: 0 12px; }\n\n#page_buttons {\n  display: flex;\n  justify-content: space-between; }\n", ""]);
+exports.push([module.i, "body {\n  font: 100% Helvetica, sans-serif;\n  color: #333; }\n\n#header {\n  width: 1024px;\n  margin: 0 auto 60px auto; }\n  #header #titlebar {\n    background-color: #263238;\n    padding: 20px;\n    position: relative;\n    font-size: 1.5em; }\n    #header #titlebar #title {\n      color: white;\n      text-align: center; }\n    #header #titlebar #search_bar {\n      position: absolute;\n      right: 20px;\n      top: 20px;\n      background-color: #3C464C; }\n      #header #titlebar #search_bar #search {\n        background-color: #3C464C;\n        border: 0;\n        color: white; }\n  #header #categories {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 50px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6; }\n    #header #categories div {\n      padding: 16px;\n      font-weight: 700; }\n    #header #categories div:first-child {\n      border-bottom: solid 3px #009CDE; }\n\n#content {\n  width: 924px;\n  margin: 0 auto; }\n  #content #top_stories {\n    font-family: serif;\n    font-weight: 700;\n    font-size: 2.5em;\n    margin-top: 18px;\n    margin-bottom: 30px; }\n  #content .article {\n    display: flex;\n    flex-direction: row;\n    margin-bottom: 30px;\n    border: solid 1px #ECECEC;\n    box-shadow: 0 8px 13px -3px #f6f6f6;\n    position: relative;\n    height: 200px;\n    cursor: pointer; }\n    #content .article .article_image {\n      min-width: 200px;\n      background-color: lightgray; }\n      #content .article .article_image img {\n        object-fit: cover;\n        width: 200px;\n        height: 200px; }\n    #content .article .article_info {\n      padding: 30px 20px; }\n    #content .article .article_title {\n      font-size: 1.4em;\n      margin-bottom: 40px; }\n    #content .article .article_credit {\n      position: absolute;\n      bottom: 20px;\n      color: #B1B3B3; }\n      #content .article .article_credit .article_time {\n        color: #002F6C; }\n\n.search_article:first-of-type {\n  border-top: solid 2px #F5F5F5; }\n\n.search_articles {\n  margin-bottom: 30px; }\n\n.search_article {\n  display: flex;\n  flex-direction: row;\n  border-bottom: solid 2px #F5F5F5;\n  padding: 20px 0;\n  cursor: pointer; }\n  .search_article .article_image {\n    min-width: 100px;\n    min-height: 100px; }\n    .search_article .article_image img {\n      object-fit: cover;\n      width: 100px;\n      height: 100px; }\n  .search_article .article_info {\n    padding: 10px 30px; }\n    .search_article .article_info .article_title {\n      color: #009CDE;\n      margin-bottom: 30px;\n      font-size: 1.5em; }\n\n.full_article .article_title {\n  font-size: 2.5em;\n  margin-bottom: 35px; }\n\n.full_article .article_credit {\n  margin-bottom: 45px;\n  color: #B1B3B3; }\n\n.full_article .article_time {\n  color: #02316D; }\n\n.full_article .article_content {\n  display: flex;\n  flex-direction: row; }\n  .full_article .article_content .article_image {\n    min-width: 150px;\n    min-height: 150px; }\n    .full_article .article_content .article_image img {\n      object-fit: cover;\n      width: 150px;\n      height: 150px; }\n  .full_article .article_content .article_info {\n    padding: 10px 40px; }\n    .full_article .article_content .article_info a {\n      position: relative;\n      top: 15px; }\n\n#breadcrumbs {\n  margin-bottom: 35px;\n  font-size: 1.25em; }\n  #breadcrumbs #first {\n    color: #009CDE;\n    cursor: pointer; }\n  #breadcrumbs #second {\n    color: #C7C7CC;\n    margin: 0 12px; }\n\n#page_buttons {\n  display: flex;\n  justify-content: space-between; }\n  #page_buttons button {\n    cursor: pointer; }\n", ""]);
 
 // exports
 
