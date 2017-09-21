@@ -54,7 +54,6 @@ body {
       cursor: pointer;
     }
   }
-
 }
 
 #content {
@@ -213,8 +212,14 @@ body {
 #page_buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
 
   button {
     cursor: pointer;
-  }
+    background-color: white;
+    border: 2px solid #ECECEC;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    }
 }
