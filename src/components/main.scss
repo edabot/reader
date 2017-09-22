@@ -113,6 +113,51 @@ body {
   }
 }
 
+#top_article_group {
+  display: flex;
+  flex-direction: row;
+}
+
+.top_article {
+  min-width: 550px;
+  margin: 0 30px 30px 0;
+  border: solid 1px #ECECEC;
+  box-shadow: 0 8px 13px -3px #f6f6f6;
+  cursor: pointer;
+
+  .article_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #C1C9D5;
+    padding: 27px 22px;
+
+    .article_title {
+      font-size: 1.4em;
+      margin-bottom: 40px;
+      margin-right: 20px;
+    }
+
+    .article_credit {
+      color: white;
+    }
+
+    .article_image{
+      min-width: 160px;
+
+      img {
+        object-fit: cover;
+        width: 160px;
+        height: 160px;
+      }
+    }
+  }
+
+  .article_bottom {
+    padding: 32px 22px;
+  }
+}
+
 .search_article:first-of-type {
   border-top: solid 2px #F5F5F5;
 }

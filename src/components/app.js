@@ -75,7 +75,7 @@ export default class App extends Component {
           </div>
         </div>
       )
-    } else {
+    } else  if ( this.state.articles.length > 0 ){
       return (
         <div>
           <ArticleList articles={this.state.articles} setArticle={ this.setArticle.bind(this) }/>
